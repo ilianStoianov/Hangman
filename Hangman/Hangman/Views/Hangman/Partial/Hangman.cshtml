@@ -1,0 +1,114 @@
+﻿@model Hangman.ViewModels.WordDetails
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        // Calls the "GetHelpForWord" method from the "Hangman" controller.
+        $("#btnGetHelpForWord").click(function () {
+            var letters = $(this).val();
+
+            if ($('#checkWord').hasClass('show')) {
+                var elements = $('.show, .hidden');
+                ChangeElementVisible(elements, $('#btnIKnowThisWord'));
+            }
+
+            $("#playHangman").load('@(Url.Action("GetHelpForWord", "Hangman", null, Request.Url.Scheme))');
+        });
+
+        // Calls the "CheckLetter" method from the "Hangman" controller with the entered word as query string parameter.
+        $("#btnCheckWord").click(function () {
+
+            $.validator.messages.required = "*";
+            if (!$("#fmFullWord").valid()) {
+                return false;
+            }
+
+            var allElements = $('.fullWordLeter');
+            var word = '';
+            allElements.each(function () {
+                word += $(this).val();
+            });
+
+            $("#playHangman").load('@(Url.Action("CheckLetter", "Hangman", null, Request.Url.Scheme))?word=' + word);
+        });
+
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>@Model.WordDescription?</h3>
+        <hr />
+        <div class="show mystery">
+            @foreach (char letter in Model.SpellingWords)
+            {
+                <span>@letter</span>
+            }
+        </div>
+
+        <div class="mystery hidden">
+            <form id="fmFullWord" action="javascript:void(0);" method="get">
+                @for (int i = 0; i < Model.SpellingWords.Count(); i++)
+                {
+                    if (Model.SpellingWords[i] == '_')
+                    {
+                        <input id="@("enteredLetter-" + @i)" name="@("enteredLetter-" + @i)" class="fullWordLeter required" type="text" maxlength="1" />
+                    }
+                    else if (!char.IsWhiteSpace(Model.SpellingWords[i]))
+                    {
+                        <span>@Model.SpellingWords[i]</span>
+                    }
+                    else
+                    {
+                        <span>&nbsp;</span>
+                    }
+                }
+
+                <input type="submit" id="btnCheckWord" value="Провери" class="mt-15 btn btn-success" />
+            </form>
+
+            <p class="navbar-text text-info">
+                Ако въведената дума е грешна, автоматично ще бъдете обесен.
+            </p>
+
+        </div>
+
+        @if (Model.WordHelps != null)
+        {
+            <div class="help-block">
+                <h3>Помощ:</h3>
+            </div>
+
+            foreach (Hangman.Core.Models.WordModels.WordHelp help in Model.WordHelps)
+            {
+                <h4 class="text-info">@help.Content</h4>
+                <hr />
+            }
+        }
+        else
+        {
+            <div class="text-info mt-15">
+                <p class="text-info">Ако се затруднявате с думата използвайте подсказка.</p>
+                <input id="btnGetHelpForWord" type="button" class="btn btn-info" value="Помощ" />
+            </div>
+        }
+
+        <h4 class="text-danger">@Model.Message</h4>
+    </div>
+    <div class="col-md-4">
+        <div class="gallows step-@(Model.MissedLettersCount == 0 ? "victory" : Model.WrongLettersCount.ToString())">
+            <div class="wrong-letters">
+                @foreach (char wrongLetter in Model.WrongLetters)
+                {
+                    <span class="">@wrongLetter</span>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@if ((Model.MissedLettersCount == 0) || (Model.WrongLettersCount == 5))
+{
+    Html.RenderPartial("Partial/Finish", Model);
+}

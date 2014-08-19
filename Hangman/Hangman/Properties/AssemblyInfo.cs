@@ -1,4 +1,11 @@
-﻿using System.Reflection;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="None">
+// Copyright (c) Ilian Stoyanov. All rights reserved.
+// </copyright>
+// <author>Ilian Stoyanov</author>
+//-----------------------------------------------------------------------
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -20,7 +27,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("de5f00ad-7e03-44aa-b0ee-eed46c50114c")]
+[assembly: Guid("8fe60d42-e769-4310-a700-acbb722a4cfb")]
 
 // Version information for an assembly consists of the following four values:
 //

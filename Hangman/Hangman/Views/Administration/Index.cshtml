@@ -1,0 +1,20 @@
+﻿@model Hangman.ViewModels.AdministrationViewModel
+
+@{
+    ViewBag.Title = "Администрация";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-info">Администрация</h2>
+
+<div id="SeachAccountsForm">
+    @{Html.RenderPartial("Partial/Accounts", Model.Accounts);}
+</div>
+
+<div id="SeachWordsForm">
+    @{Html.RenderPartial("Partial/Words", Model.Words);}
+</div>
+
+<div id="SeachReviewsForm">
+    @{Html.RenderPartial("Partial/Reviews", Model.Reviews);}
+</div>

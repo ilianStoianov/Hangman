@@ -1,11 +1,15 @@
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\Hangman.Tests.dll
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\Hangman.Tests.pdb
+E:\Despark\Hangman\Hangman\Hangman.Tests\obj\Debug\Hangman.Tests.dll
+E:\Despark\Hangman\Hangman\Hangman.Tests\obj\Debug\Hangman.Tests.pdb
+E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\Hangman.Core.dll
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\Hangman.dll
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.Mvc.dll
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.Razor.dll
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.WebPages.Razor.dll
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.WebPages.dll
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\Hangman.Core.pdb
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\Hangman.pdb
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.Mvc.xml
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.Razor.xml
@@ -13,5 +17,6 @@ E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.WebPages.Razor.xml
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.WebPages.xml
 E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Despark\Hangman\Hangman\Hangman.Tests\obj\Debug\Hangman.Tests.csprojResolveAssemblyReference.cache
-E:\Despark\Hangman\Hangman\Hangman.Tests\obj\Debug\Hangman.Tests.dll
-E:\Despark\Hangman\Hangman\Hangman.Tests\obj\Debug\Hangman.Tests.pdb
+E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\EntityFramework.dll
+E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\EntityFramework.xml
+E:\Despark\Hangman\Hangman\Hangman.Tests\bin\Debug\Hangman.Tests.dll.config

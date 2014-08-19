@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E249BEAE-6605-452C-BC99-7DB9C20F18D6}</ProjectGuid>
+    <ProjectGuid>{BE039032-802C-4B1B-83C9-AB7909EC9A55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hangman.Tests</RootNamespace>
@@ -52,13 +52,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hangman.Core\Hangman.Core.csproj">
+      <Project>{82798ebd-779a-4e8e-88a2-cdd87c010a14}</Project>
+      <Name>Hangman.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hangman\Hangman.csproj">
-      <Project>{A3082A3D-C82B-45AA-ADBA-F189D129F92B}</Project>
+      <Project>{4f578053-2986-4596-833d-ee45c37c8d3a}</Project>
       <Name>Hangman</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(ProgramFiles)\MSBuild\StyleCop\v4.7\StyleCop.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,0 +1,52 @@
+﻿@model Hangman.ViewModels.AdminWordsViewModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#FilterSeachWords').change(function () {
+            var filter = $(this).val();
+
+            $('#SeachWordsForm').load('@(Url.Action("GetWords", "Administration", null, Request.Url.Scheme))?filter=' + filter);
+        });
+
+    });
+</script>
+
+<hr />
+<h3 class="text-info">Думи</h3>
+
+@if (Model != null)
+{
+    <div>
+        @Html.TextBox("FilterSeachWords", Model.Filter, new { @class = "form-control", @placeholder = "Търси за ..." })
+        <a id="SeachWords" href="javascript:void(0);" class="btn btn-default actionButton">Търси</a>
+        <label class="text-info"> &nbsp; Брой: @Model.Words.Count()</label>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Дума", "Index", new { @sortOrder = "date" })
+            </th>
+            <th>
+                @Html.ActionLink("Описание", "Index", new { @sortOrder = "word" })
+            </th>
+        </tr>
+
+        @foreach (Hangman.Core.Models.WordModels.Word word in Model.Words)
+        {
+            <tr>
+                <td>
+                    <label>@word.Name</label>
+                </td>
+                <td>
+                    <label>@word.Description</label>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h3 class="text-danger">Небяха откритри резултати</h3>
+}

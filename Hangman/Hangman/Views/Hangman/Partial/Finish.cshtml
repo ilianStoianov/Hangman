@@ -1,0 +1,30 @@
+﻿@model Hangman.ViewModels.WordDetails
+
+<div class="hagman-finish ">
+    <div class="white_content">
+        <div class="finish winner @(Model.MissedLettersCount == 0 ? "winner" : "loser")">
+            @Html.ActionLink("X", "Index", "Home", null, new { @class = "btn-close", @title = "Изход" })
+            <div class="spelling-word">
+                @if (Model.MissedLettersCount == 0)
+                {
+                    <p>Успяхте да познаете думата</p>
+                }
+                else
+                {
+                    <p>Не успяхте да познаете думата</p>
+                }
+
+                @foreach (char letter in Model.SpellingWords)
+                {
+                    <span>@letter</span>
+                }
+            </div>
+
+            <div class="actions">
+                @Html.ActionLink("Нова игра", "Index", new { @title = "Започнете нова игра" })
+                @Html.ActionLink("Статистика", "Index", "Statistic", null, new { @title = "Проверте личната си статистика" })
+            </div>
+
+        </div>
+    </div>
+</div>

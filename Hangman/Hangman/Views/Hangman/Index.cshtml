@@ -1,0 +1,90 @@
+﻿@model Hangman.ViewModels.HangmanViewModel
+
+@{
+    ViewBag.Title = "Бесеничка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head
+{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            // Shows or hides the input panel of the whole word.
+            $('#btnIKnowThisWord').click(function () {
+                var elements = $('.show, .hidden');
+
+                ChangeElementVisible(elements, $(this));
+            });
+
+            // Calls the "CheckLetter" method from the "Hangman" controller with the selected letter as query string parameter.
+            $(".selectedLetter").click(function () {
+                var letters = $(this).val();
+                $(this).attr("disabled", "disabled");
+
+                $("#playHangman").load('@(Url.Action("CheckLetter", "Hangman", null, Request.Url.Scheme))?letters=' + letters);
+            });
+
+        });
+
+        var ChangeElementVisible = function (elements, btn) {
+            $.each(elements, function () {
+                if ($(this).hasClass('show')) {
+                    $(this).removeClass('show').addClass('hidden');
+                } else {
+                    $(this).removeClass('hidden').addClass('show');
+                }
+            });
+
+            if (btn.val() == 'Знам я') {
+                btn.val("Не я знам");
+            } else {
+                btn.val('Знам я');
+            }
+        };
+    </script>
+}
+
+@using (Html.BeginForm("Index", "Hangman", FormMethod.Post))
+{
+    <div class="row dropdown-header">
+        <div class="col-sm-3">
+            @Html.LabelFor(m => m.SelectedLanguageID, new { htmlAttributes = new { @class = "left" } })
+            @Html.DropDownListFor(m => m.SelectedLanguageID, new SelectList(Model.Languages, "LanguageID", "Name", Model.SelectedLanguageID), new { @onchange = "this.form.submit();", @class = "dropdown dropdown-header" })
+        </div>
+        <div class="col-sm-3">
+            @Html.LabelFor(m => m.SelectedCategoryID)
+            @Html.DropDownListFor(m => m.SelectedCategoryID, new SelectList(Model.Categories, "CategoryID", "Name", Model.SelectedCategoryID), new { @onchange = "this.form.submit();", @class = "dropdown dropdown-header" })
+        </div>
+        <div class="col-sm-3">
+            @Html.LabelFor(m => m.SelectedLevelID)
+            @Html.DropDownListFor(m => m.SelectedLevelID, new SelectList(Model.Levels, "LevelID", "Name", Model.SelectedLevelID), new { @onchange = "this.form.submit();", @class = "dropdown dropdown-header" })
+        </div>
+    </div>
+}
+
+<div id="playHangman">
+    @if (Model.WordDetails != null)
+    {
+        Html.RenderPartial("Partial/Hangman", Model.WordDetails);
+    }
+    else
+    {
+        <h3 class="text-center text-danger ">Не е открита дума отговаряща на условията.</h3>
+    }
+</div>
+
+@if (Model.WordDetails != null && Model.WordDetails.MissedLettersCount > 0)
+{
+    <div class="form-horizontal alphabet-letters show">
+        @foreach (char letter in Model.WordDetails.Alphabet)
+        {
+            <input type="button" value="@letter" class="btn btn-default selectedLetter" />
+        }
+        <hr />
+    </div>
+
+    <input type="button" id="btnIKnowThisWord" value="Знам я" class="btn btn-info" />
+}

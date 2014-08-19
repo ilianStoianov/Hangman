@@ -1,0 +1,80 @@
+﻿@model Hangman.ViewModels.StatisticViewModel
+
+@{
+    ViewBag.Title = "Статистика";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-info">Статистика</h2>
+
+@if (Model.Results == null)
+{
+    <h3 class="text-danger">@Model.Message</h3>
+    <div class="row">
+        <div class="col-md-1">
+            @Html.ActionLink("Вход", "Login", "Account", null, null, "", "", new { @class = "btn btn-info" })
+        </div>
+        <div class="col-md-1">
+            @Html.ActionLink("Вход с email", "Index", "Home", null, null, "", "", new { @class = "btn btn-info" })
+        </div>
+    </div>
+}
+else
+{
+    <div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Дата", "Index", new { @sortOrder = "date" })
+            </th>
+            <th>
+                @Html.ActionLink("Ниво", "Index", new { @sortOrder = "word" })
+            </th>
+            <th>
+                @Html.ActionLink("Език", "Index", new { @sortOrder = "word" })
+            </th>
+            <th>
+                @Html.ActionLink("Категория", "Index", new { @sortOrder = "word" })
+            </th>
+            <th>
+                @Html.ActionLink("Дума", "Index", new { @sortOrder = "word" })
+            </th>
+            <th>
+                @Html.ActionLink("Грешки", "Index", new { @sortOrder = "error" })
+            </th>
+            <th>
+                @Html.ActionLink("Резултат", "Index", new { @sortOrder = "result" })
+            </th>
+        </tr>
+
+        @foreach (Hangman.Core.Models.StatisticModels.ResultViewModel statistic in Model.Results)
+        {
+            <tr>
+                <td>
+                    <label>@statistic.PlayDate.ToString("dd.MM.yyyy")</label>
+                </td>
+                <td>
+                    <label>@statistic.Level</label>
+                </td>
+                <td>
+                    <label>@statistic.Language</label>
+                </td>
+                <td>
+                    <label>@statistic.Category</label>
+                </td>
+                <td>
+                    <label>@statistic.WordName</label>
+                </td>
+                <td>
+                    @Html.DisplayFor(m => statistic.WrongAssumption)
+                </td>
+
+                <td>
+                    <label>@(statistic.IsWinner == false ? "Позната" : "Непозната")</label>
+                </td>
+            </tr>
+        }
+
+    </table>
+}

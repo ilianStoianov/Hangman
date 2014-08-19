@@ -1,0 +1,71 @@
+﻿@model Hangman.ViewModels.AdminReviewsViewModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#FilterSeachReviews').change(function () {
+            var filter = $(this).val();
+
+            $('#SeachReviewsForm').load('@(Url.Action("GetReviews", "Administration", null, Request.Url.Scheme))?filter=' + filter);
+        });
+
+    });
+</script>
+
+<hr />
+<h3 class="text-info">Отзиви</h3>
+
+@if (Model != null)
+{
+    <div>
+
+        @Html.TextBox("FilterSeachReviews", Model.Filter, new { @class = "form-control", @placeholder = "Търси за ..." })
+        <a id="SeachReviews" href="javascript:void(0);" class="btn btn-default actionButton">Търси</a>
+        <label class="text-info"> &nbsp; Брой: @Model.Reviews.Count()</label>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Дата", "Index", new { @sortOrder = "date" })
+            </th>
+            <th>
+                @Html.ActionLink("Име", "Index", new { @sortOrder = "word" })
+            </th>
+            <th>
+                @Html.ActionLink("Email", "Index", new { @sortOrder = "error" })
+            </th>
+            <th>
+                @Html.ActionLink("Съобщение", "Index", new { @sortOrder = "result" })
+            </th>
+            <th>
+                @Html.ActionLink("Публикуван", "Index", new { @sortOrder = "result" })
+            </th>
+        </tr>
+
+        @foreach (Hangman.Core.Models.ReviewModels.Review review in Model.Reviews)
+        {
+            <tr>
+                <td>
+                    <label>@review.DateCreated.ToString("MM.dd.yyy")</label>
+                </td>
+                <td>
+                    <label>@review.Names</label>
+                </td>
+                <td>
+                    <label>@review.Email</label>
+                </td>
+                <td>
+                    <label>@review.Message</label>
+                </td>
+                <td>
+                    <label>@(review.IsApproved ? "Да" : "Не")</label>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h3 class="text-danger">Небяха откритри резултати</h3>
+}

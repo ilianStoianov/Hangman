@@ -1,0 +1,70 @@
+﻿@model Hangman.ViewModels.AdminAccountsViewModel
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#FilterSeachAccounts').change(function () {
+            var filter = $(this).val();
+
+            $('#SeachAccountsForm').load('@(Url.Action("GetAccounts", "Administration", null, Request.Url.Scheme))?filter=' + filter);
+        });
+
+    });
+</script>
+
+<hr />
+<h2 class="text-info">Акаунти</h2>
+
+@if (Model != null)
+{
+    <div>
+        @Html.TextBox("FilterSeachAccounts", Model.Filter, new { @class = "form-control", @placeholder = "Търси за ..." })
+        <a id="SeachAccounts" href="javascript:void(0);" class="btn btn-default actionButton">Търси</a>
+        <label class="text-info"> &nbsp; Брой: @Model.Accounts.Count()</label>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Дата", "Index", new { @sortOrder = "date" })
+            </th>
+            <th>
+                @Html.ActionLink("Име", "Index", new { @sortOrder = "word" })
+            </th>
+            <th>
+                @Html.ActionLink("Фамилия", "Index", new { @sortOrder = "error" })
+            </th>
+            <th>
+                @Html.ActionLink("Email", "Index", new { @sortOrder = "result" })
+            </th>
+            <th>
+                @Html.ActionLink("Статус", "Index", new { @sortOrder = "result" })
+            </th>
+        </tr>
+
+        @foreach (Hangman.Core.Models.AccountModels.Account account in Model.Accounts)
+        {
+            <tr>
+                <td>
+                    <label>@account.CreateDate.ToString("MM.dd.yyyy")</label>
+                </td>
+                <td>
+                    <label>@account.FirstName</label>
+                </td>
+                <td>
+                    <label>@account.LastName</label>
+                </td>
+                <td>
+                    <label>@account.Email</label>
+                </td>
+                <td>
+                    <label>@(account.IsLocked ? "Блокиран" : "Активен")</label>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h3 class="text-danger">Небяха откритри резултати</h3>
+}

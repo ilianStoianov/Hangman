@@ -1,0 +1,4 @@
+<StyleCopViolations>
+  <Violation LineNumber="14" Source="E:\Despark\Hangman\Hangman\Hangman.Tests\UnitTest1.cs" RuleNamespace="StyleCop.CSharp.DocumentationRules" Rule="ElementsMustBeDocumented" RuleId="SA1600">The class must have a documentation header.</Violation>
+  <Violation LineNumber="17" Source="E:\Despark\Hangman\Hangman\Hangman.Tests\UnitTest1.cs" RuleNamespace="StyleCop.CSharp.DocumentationRules" Rule="ElementsMustBeDocumented" RuleId="SA1600">The method must have a documentation header.</Violation>
+</StyleCopViolations>

@@ -1,0 +1,38 @@
+﻿@model Hangman.ViewModels.LoginAsGuestViewModel
+
+@{
+    ViewBag.Title = "Бесеничка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-info text-center">Бесеничка</h1>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="form-horizontal home-screen">
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if (string.IsNullOrEmpty((string)HttpContext.Current.Session["Email"]))
+                    {
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Въведете email адрес" } })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    }
+                    else
+                    {
+                        <label class="control-label col-md-2">@HttpContext.Current.Session["Email"]</label>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Начало" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+    <h4 class="text-danger">@Model.Message</h4>
+}

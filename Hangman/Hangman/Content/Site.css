@@ -1,0 +1,168 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.mt-15 {
+    margin-top: 15px;
+}
+.home-screen {
+    background: url(Images/bear.png) no-repeat 130px 315px, url(Images/tree.png) no-repeat 25px 0;
+    width: 630px;
+    height: 560px;
+}
+
+.gallows {
+    background: url(Images/cloud.png) no-repeat 25px 0;
+    width: 650px;
+    height: 630px;
+    padding: 50px 100px;
+}
+
+    .gallows.step-1 {
+        background: url(Images/step-1.png) no-repeat 110px 472px, url(Images/cloud.png) no-repeat 25px 0;
+    }
+
+    .gallows.step-2 {
+        background: url(Images/step-2.png) no-repeat 170px 120px, url(Images/step-1.png) no-repeat 110px 471px, url(Images/cloud.png) no-repeat 25px 0;
+    }
+
+    .gallows.step-3 {
+        background: url(Images/step-3.png) no-repeat 500px 409px, url(Images/step-2.png) no-repeat 170px 120px, url(Images/step-1.png) no-repeat 110px 471px, url(Images/cloud.png) no-repeat 25px 0;
+    }
+
+    .gallows.step-4 {
+        background: url(Images/step-4.png) no-repeat 340px 275px, url(Images/step-2.png) no-repeat 170px 120px, url(Images/step-1.png) no-repeat 110px 471px, url(Images/cloud.png) no-repeat 25px 0;
+    }
+
+    .gallows.step-5 {
+        background: url(Images/step-5.png) no-repeat 205px 200px, url(Images/step-2.png) no-repeat 170px 120px, url(Images/step-1.png) no-repeat 110px 471px, url(Images/cloud.png) no-repeat 25px 0;
+    }
+
+    .gallows.step-victory {
+        background: url(Images/victory.png) no-repeat 225px 180px, url(Images/grass.png) no-repeat 60px 390px, url(Images/cloud.png) no-repeat 25px 0;
+    }
+
+
+.mystery {
+    font-family: 'Comic Sans MS';
+    font-size: 1.5em;
+    padding-bottom: 25px;
+}
+
+    .mystery input[type=text] {
+        width: 25px;
+        border: 1px solid #fff;
+        box-shadow: 2px 1px 5px #c2bfbf;
+    }
+
+        .mystery input[type=text]:focus {
+            border: 1px solid blue;
+        }
+
+.wrong-letters {
+    width: 380px;
+    height: 70px;
+    padding-top: 15px;
+    font-size: 1.8em;
+    padding-left: 135px;
+}
+
+    .wrong-letters span {
+        margin: 5px;
+    }
+
+.iknow-word input[type="button"] {
+    margin-top: 15px;
+}
+
+.alphabet-letters {
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
+    font-family: 'Comic Sans MS';
+}
+
+    .alphabet-letters input[type="button"] {
+        width: 50px;
+        margin: 5px;
+        box-shadow: 6px 6px 5px #ccc;
+    }
+
+input[type="button"]:hover, input[type="button"][disabled] {
+    box-shadow: 1px 1px 2px #ccc;
+    background-color: #e6e0e0;
+}
+
+.hagman-finish {
+    /*display: none;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(Images/popup-background.png);
+}
+
+    .hagman-finish .white_content {
+        position: absolute;
+        top: 15%;
+        left: 25%;
+        width: 100%;
+        max-width: 660px;
+        height: 100%;
+        max-height: 660px;
+        border: 1px solid #000000;
+        background-color: white;
+        z-index: 1002;
+        overflow: auto;
+        box-shadow: 5px 4px 6px #000000;
+    }
+
+.finish {
+    width: 650px;
+    height: 630px;
+}
+
+    .finish.winner {
+        background: url(Images/victory.png) no-repeat 225px 180px, url(Images/grass.png) no-repeat 60px 390px, url(Images/cloud.png) no-repeat 25px 0;
+    }
+
+    .finish.loser {
+        background: url(Images/step-5.png) no-repeat 205px 200px, url(Images/step-2.png) no-repeat 170px 120px, url(Images/step-1.png) no-repeat 110px 471px, url(Images/cloud.png) no-repeat 25px 0;
+    }
+
+    .finish .spelling-word {
+        padding-top: 55px;
+        font-family: 'Comic Sans MS';
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .finish .actions {
+        margin-top: 150px;
+    }
+
+    .finish a {
+        display: block;
+        font-family: 'Comic Sans MS';
+        font-size: 1.2em;
+        margin: 15px;
+    }
+
+.btn-close {
+    color: #428bca;
+    float: right;
+}

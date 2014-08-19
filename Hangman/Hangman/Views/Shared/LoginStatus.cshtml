@@ -1,0 +1,8 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink("Изход", "LogOff", "Account")
+}
+else
+{
+    @Html.ActionLink("Вход", "Login", "Account")
+}

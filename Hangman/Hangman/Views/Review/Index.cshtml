@@ -1,0 +1,64 @@
+﻿@model Hangman.ViewModels.ReviewViewModel
+
+@{
+    ViewBag.Title = "Отзиви";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-info">Отзиви</h2>
+
+<div class="form-horizontal">
+
+    @foreach (Hangman.Core.Models.ReviewModels.Review entry in Model.PreviousEntries)
+    {
+        <div class="form-group">
+            <h3>@entry.Names</h3>
+            <h4>@entry.Message</h4>
+            <h4>@entry.DateCreated.ToShortDateString()</h4>
+        </div>
+        <hr />
+    }
+
+    @if (string.IsNullOrEmpty(Model.Message))
+    {
+        using (Html.BeginForm())
+        {
+            <h3 class="text-info mt-15">Добавяне на отзив</h3>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewEntry.Names, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.NewEntry.Names, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.NewEntry.Names, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewEntry.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.NewEntry.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.NewEntry.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewEntry.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.NewEntry.Message, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.NewEntry.Message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Изпрати" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="form-group">
+            <h3 class="text-info text-center">@Model.Message</h3>
+        </div>
+    }
+</div>
