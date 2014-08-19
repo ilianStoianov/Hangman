@@ -301,6 +301,9 @@ namespace Hangman.Controllers
             hangmanModel.WordDetails.MissedLettersCount = missedLettersCount;
             hangmanModel.WordDetails.WrongLettersCount = 0;
             hangmanModel.WordDetails.WordDescription = word.Description;
+            hangmanModel.SelectedCategoryID = word.CategoryID;
+            hangmanModel.SelectedLanguageID = word.LanguageID;
+            hangmanModel.SelectedLevelID = word.LevelID;
 
             return hangmanModel;
         }
