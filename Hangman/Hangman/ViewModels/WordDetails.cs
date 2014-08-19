@@ -12,6 +12,9 @@ namespace Hangman.ViewModels
 
     public class WordDetails
     {
+        /// <summary>
+        /// Gets or sets an identification number of the word.
+        /// </summary>
         public int WordID { get; set; }
 
         public List<char> WordName { get; set; }
@@ -20,9 +23,12 @@ namespace Hangman.ViewModels
 
         public List<char> SpellingWords { get; set; }
 
+        /// <summary>
+        /// Gets or sets a description of the word.
+        /// </summary>
         public string WordDescription { get; set; }
 
-        public List<WordHelp> WordHelps { get; set; }
+        public WordHelp WordHelp { get; set; }
 
         public List<char> WrongLetters { get; set; }
 

@@ -13,8 +13,14 @@ namespace Hangman.ViewModels
 
     public class AdminReviewsViewModel
     {
+        /// <summary>
+        /// Gets or sets a collection of existing accounts, as type IEnumerable.
+        /// </summary>
         public IEnumerable<Review> Reviews { get; set; }
 
+        /// <summary>
+        /// Gets or sets a criteria for filtering the results.
+        /// </summary>
         public string Filter { get; set; }
     }
 }

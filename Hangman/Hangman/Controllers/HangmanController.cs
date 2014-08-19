@@ -175,16 +175,16 @@ namespace Hangman.Controllers
 
             if (hangmanModel.WordDetails.WrongLettersCount <= 3)
             {
-                List<WordHelp> helps = this.hangamnProvider.GetHelpsForWord(hangmanModel.WordDetails.WordID).ToList();
+                WordHelp help = this.hangamnProvider.GetHelpForWord(hangmanModel.WordDetails.WordID);
 
-                if (helps.Count() > 0)
+                if (help != null)
                 {
-                    hangmanModel.WordDetails.WordHelps = this.hangamnProvider.GetHelpsForWord(hangmanModel.WordDetails.WordID).ToList();
+                    hangmanModel.WordDetails.WordHelp = this.hangamnProvider.GetHelpForWord(hangmanModel.WordDetails.WordID);
                     hangmanModel.WordDetails.WrongLettersCount += 1;
                 }
                 else
                 {
-                    hangmanModel.WordDetails.WordHelps = new List<WordHelp> { new WordHelp() { Content = "Съжаляваме, но няма налична помощ за тази дума." } };
+                    hangmanModel.WordDetails.WordHelp = new WordHelp() { Content = "Съжаляваме, но няма налична помощ за тази дума." };
                 }
 
                 HttpContext.Session["HangmanData"] = hangmanModel;

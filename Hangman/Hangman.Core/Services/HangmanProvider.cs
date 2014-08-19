@@ -85,16 +85,16 @@ namespace Hangman.Core.Services
             return word;
         }
 
-        public IEnumerable<WordHelp> GetHelpsForWord(int wordID)
+        public WordHelp GetHelpForWord(int wordID)
         {
-            IEnumerable<WordHelp> helps;
+            WordHelp help;
 
             using (HangmanContext context = new HangmanContext())
             {
-                helps = context.WordHelps.Where(h => h.WordID == wordID).ToList();
+                help = context.WordHelps.FirstOrDefault(h => h.WordID == wordID);
             }
 
-            return helps;
+            return help;
         }
 
         public IEnumerable<Language> GetAllLanguages()

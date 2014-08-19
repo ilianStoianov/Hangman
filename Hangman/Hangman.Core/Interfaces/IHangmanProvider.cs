@@ -19,7 +19,7 @@ namespace Hangman.Core.Interfaces
 
         Word GetRandomWord(Func<Word, bool> filter = null);
 
-        IEnumerable<WordHelp> GetHelpsForWord(int wordID);
+        WordHelp GetHelpForWord(int wordID);
 
         IEnumerable<Language> GetAllLanguages();
 

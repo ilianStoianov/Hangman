@@ -73,17 +73,14 @@
 
         </div>
 
-        @if (Model.WordHelps != null)
+        @if (Model.WordHelp != null)
         {
             <div class="help-block">
                 <h3>Помощ:</h3>
             </div>
 
-            foreach (Hangman.Core.Models.WordModels.WordHelp help in Model.WordHelps)
-            {
-                <h4 class="text-info">@help.Content</h4>
-                <hr />
-            }
+            <h4 class="text-info">@Model.WordHelp.Content</h4>
+            <hr />
         }
         else
         {

@@ -13,23 +13,47 @@ namespace Hangman.ViewModels
 
     public class HangmanViewModel
     {
+        /// <summary>
+        /// Gets or sets an identification number of the selected language.
+        /// </summary>
         [Display(Name = "Език")]
         public int SelectedLanguageID { get; set; }
 
+        /// <summary>
+        /// Gets or sets an identification number of the selected level.
+        /// </summary>
         [Display(Name = "Ниво")]
         public int SelectedLevelID { get; set; }
 
+        /// <summary>
+        /// Gets or sets an identification number of the selected category.
+        /// </summary>
         [Display(Name = "Категория")]
         public int SelectedCategoryID { get; set; }
 
+        /// <summary>
+        /// Gets or sets a collection for all existing languages into database, as type IEnumerable.
+        /// </summary>
         public IEnumerable<Language> Languages { get; set; }
 
+        /// <summary>
+        /// Gets or sets a collection for all existing levels into database, as type IEnumerable.
+        /// </summary>
         public IEnumerable<Level> Levels { get; set; }
 
+        /// <summary>
+        /// Gets or sets a collection for all existing categories into database, as type IEnumerable.
+        /// </summary>
         public IEnumerable<Category> Categories { get; set; }
 
+        /// <summary>
+        /// Gets or sets details of the word.
+        /// </summary>
         public WordDetails WordDetails { get; set; }
 
+        /// <summary>
+        /// Gets or sets an identification number of the created record.
+        /// </summary>
         public int HangmanResultID { get; set; }
     }
 }
