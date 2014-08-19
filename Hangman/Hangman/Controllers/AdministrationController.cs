@@ -32,7 +32,7 @@ namespace Hangman.Controllers
         #endregion
 
         // GET: Administration
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             AdministrationViewModel adminViewModel = new AdministrationViewModel();
             adminViewModel.Accounts = new AdminAccountsViewModel();

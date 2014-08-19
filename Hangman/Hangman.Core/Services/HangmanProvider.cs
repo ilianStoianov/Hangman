@@ -79,7 +79,6 @@ namespace Hangman.Core.Services
 
                 // Random random = new Random();
                 // int selectRow = random.Next(0, records.Count());
-
                 word = records.FirstOrDefault();
             }
 

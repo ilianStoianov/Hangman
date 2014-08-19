@@ -38,7 +38,7 @@ namespace Hangman.Controllers
                     loginModel.Email = model.Email;
                     loginModel.Message = "Въведеният email адрес е регистриран. Моля въведете парола";
 
-                    TempData["LoginModel"] = loginModel;
+                    this.TempData["LoginModel"] = loginModel;
 
                     return this.RedirectToAction("Login", "Account");
                 }

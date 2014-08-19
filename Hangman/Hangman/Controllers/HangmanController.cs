@@ -34,7 +34,7 @@ namespace Hangman.Controllers
 
         // GET: Hangman
         [HttpGet]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             string email = string.Empty;
             if (User.Identity.IsAuthenticated)
@@ -59,8 +59,8 @@ namespace Hangman.Controllers
                 return this.RedirectToAction("Index", "Home");
             }
 
-            hangmanModel = await this.GetAllFilters(hangmanModel);
-            hangmanModel = await this.LoadWordDetailsIntoModel(hangmanModel, word);
+            hangmanModel = this.GetAllFilters(hangmanModel);
+            hangmanModel = this.LoadWordDetailsIntoModel(hangmanModel, word);
 
             HangmanResult result = new HangmanResult();
             result.WordID = word.WordID;
@@ -82,7 +82,7 @@ namespace Hangman.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Index(HangmanViewModel model)
+        public ActionResult Index(HangmanViewModel model)
         {
             if (HttpContext.Session["HangmanData"] != null)
             {
@@ -98,7 +98,7 @@ namespace Hangman.Controllers
                 if (word != null)
                 {
                     model.HangmanResultID = hangmanModel.HangmanResultID;
-                    model = await this.LoadWordDetailsIntoModel(model, word);
+                    model = this.LoadWordDetailsIntoModel(model, word);
 
                     HangmanResult result = new HangmanResult();
                     result.ResultID = hangmanModel.HangmanResultID;
@@ -248,7 +248,7 @@ namespace Hangman.Controllers
             return hangmanModel;
         }
 
-        private async Task<HangmanViewModel> GetAllFilters(HangmanViewModel hangmanModel)
+        private HangmanViewModel GetAllFilters(HangmanViewModel hangmanModel)
         {
             hangmanModel.Languages = this.hangamnProvider.GetAllLanguages();
             hangmanModel.Levels = this.hangamnProvider.GetAllLevels();
@@ -257,7 +257,7 @@ namespace Hangman.Controllers
             return hangmanModel;
         }
 
-        private async Task<HangmanViewModel> LoadWordDetailsIntoModel(HangmanViewModel hangmanModel, Word word)
+        private HangmanViewModel LoadWordDetailsIntoModel(HangmanViewModel hangmanModel, Word word)
         {
             if (hangmanModel.Languages == null)
             {

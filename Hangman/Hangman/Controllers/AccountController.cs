@@ -27,7 +27,7 @@ namespace Hangman.Controllers
         {
             LoginModel loginModel = new LoginModel();
 
-            if (TempData["LoginModel"] != null)
+            if (this.TempData["LoginModel"] != null)
             {
                 loginModel = (LoginModel)TempData["LoginModel"];
             }
