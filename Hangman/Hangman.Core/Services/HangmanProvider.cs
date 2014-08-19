@@ -75,12 +75,12 @@ namespace Hangman.Core.Services
 
             using (HangmanContext context = new HangmanContext())
             {
-                IQueryable<Word> records = context.Words.Where(filter).AsQueryable();
+                IQueryable<Word> records = context.Words.Where(filter).OrderBy(w => Guid.NewGuid()).AsQueryable();
 
-                Random random = new Random();
-                int selectRow = random.Next(0, records.Count());
+                // Random random = new Random();
+                // int selectRow = random.Next(0, records.Count());
 
-                word = records.FirstOrDefault(w => w.WordID == selectRow);
+                word = records.FirstOrDefault();
             }
 
             return word;
